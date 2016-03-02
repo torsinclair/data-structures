@@ -15,7 +15,7 @@ var Stack = function() {
   };
 
   someInstance.size = function() {
-    return items;
+    return Math.max(0,items);
   };
 
   return someInstance;
