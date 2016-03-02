@@ -16,8 +16,8 @@ var Stack = function() {
 
   someInstance.pop = function() {
     var val = storage[items];
-    items = Math.max(0, --items);
     delete storage[items];
+    items = Math.max(0, --items);
     return val;
 
   };
