@@ -10,10 +10,7 @@ var Stack = function() {
   someInstance.push = push;
   someInstance.pop = pop;
 
-
-
   return someInstance;
-
 };
 
 var size = function() {
@@ -23,30 +20,18 @@ var size = function() {
 var push = function(value) {
 
   this.items++;
-  //return this.items = value;
+  return this[this.items] = value;
 
+  
 };
-
 
 var pop = function() {
-  // var val = this.items;
-  // delete this.items;
+  var val = this[this.items];
+  delete this[this.items];
   this.items = Math.max(0, --this.items);
-  // return val;
-
+  return val;
 };
 
-// var stackMethods = {};
-
-// var Stack = function() {
-//   var someInstance = {};
-
-//   // Use an object with numeric keys to store values
-//   var storage = {};
-//   var items = 0;
-
-
-  // Implement the methods below
 
 
 
