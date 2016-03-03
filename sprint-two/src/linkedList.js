@@ -4,9 +4,7 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    // create a Node object with the passed in value argument
-
-    //
+    // create a Node object with the passed in value argument  
     var newNode = Node(value);
 
     // if head is null,this is a new list, we must add it
@@ -33,6 +31,32 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    // iterate over list 
+
+    var node = list.head;
+    var found = false;
+
+    //if there is only 1 node in the list
+    if( list.head === list.tail ) {
+      found = target === list.head.value;
+    }
+    else {
+       do {
+         // test for node.value === target
+         if( target === node.value ) {
+           found = true;
+           break;
+         }   
+         else {
+            node = node.next;
+
+         }
+      } while(node);
+    
+    }
+
+    return found;
+
   };
 
   return list;
