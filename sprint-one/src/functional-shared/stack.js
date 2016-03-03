@@ -8,6 +8,8 @@ var Stack = function() {
   someInstance.push = push;
   someInstance.pop = pop;
 
+  return someInstance;
+
 };
 
 var size = function(){
@@ -15,10 +17,8 @@ var size = function(){
 }
 
 var push = function(value) {
-
   this.items++;
   return this[this.items] = value;
-  
 };
 
 var pop = function() {

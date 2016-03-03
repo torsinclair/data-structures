@@ -17,13 +17,9 @@ var Queue = function() {
     delete storage[0];
     items = Math.max(0, --items);
 
-    console.log(storage);
-
     _.reduce(storage, function(acc, item, key){
       acc[key-1] = item;
     }, storage);
-
-    console.log(storage);
 
     return value;
   };
@@ -35,14 +31,3 @@ var Queue = function() {
   return someInstance;
 
 };
-
-var queue = Queue();
-
-queue.enqueue('a');
-queue.enqueue('b');
-queue.enqueue('c');
-queue.enqueue('d');
-queue.enqueue('e');
-queue.enqueue('f');
-queue.dequeue();
-
