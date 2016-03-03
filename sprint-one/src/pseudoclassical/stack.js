@@ -14,4 +14,8 @@ Stack.prototype.push = function(val) {
   this.items++;
 };
 
+Stack.prototype.pop = function() {
+  items = Math.max(0, --this.items);
+};
+
 
