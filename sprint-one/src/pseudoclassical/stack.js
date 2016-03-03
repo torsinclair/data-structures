@@ -6,7 +6,12 @@ var Stack = function() {
 
 
 Stack.prototype.size = function() {
-  return 0;
-}
+  return this.items;
+};
+
+Stack.prototype.push = function(val) {
+  //this[this.items] = val;
+  this.items++;
+};
 
 
