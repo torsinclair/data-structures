@@ -1,21 +1,26 @@
 var Stack = function() {
-  var someInstance = Object.create(Stack.prototype);
+  var someInstance = Object.create(stackMethods);
   someInstance.items = 0;
   
   return someInstance;
 };
 
-Stack.prototype.size = function() {
+var stackMethods = {};
+
+stackMethods.size = function() {
   return this.items;
 };
 
-Stack.prototype.push = function(value) {
-   this.items++;
+stackMethods.push = function(value) {
+  this.items++;
+  this[this.items] = value;
 };
 
-Stack.prototype.pop = function() {
-  this.items = Math.max(0, --this.items);     
+stackMethods.pop = function() {
+  var value = this[this.items];
+  delete this[this.items];
+  this.items = Math.max(0, --this.items);    
+  return value; 
 };
 
-var stackMethods = {};
 
