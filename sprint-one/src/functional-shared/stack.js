@@ -8,6 +8,7 @@ var Stack = function() {
   someInstance.items = 0;
   someInstance.size = size;
   someInstance.push = push;
+  someInstance.pop = pop;
 
 
 
@@ -27,13 +28,13 @@ var push = function(value) {
 };
 
 
-  // var pop = function() {
-  //   var val = storage[items];
-  //   delete storage[items];
-  //   items = Math.max(0, --items);
-  //   return val;
+var pop = function() {
+  // var val = this.items;
+  // delete this.items;
+  this.items = Math.max(0, --this.items);
+  // return val;
 
-  // };
+};
 
 // var stackMethods = {};
 
