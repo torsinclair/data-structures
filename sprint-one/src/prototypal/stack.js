@@ -13,5 +13,9 @@ Stack.prototype.push = function(value) {
    this.items++;
 };
 
+Stack.prototype.pop = function() {
+  this.items--;
+};
+
 var stackMethods = {};
 
