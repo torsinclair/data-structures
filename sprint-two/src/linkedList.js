@@ -5,12 +5,27 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     // create a Node object with the passed in value argument
-    // i.e. var node = Node(value);
-    list.tail = Node(value);
+
+    //
+    var newNode = Node(value);
+
+    // if head is null,this is a new list, we must add it
+    if(list.head === null){
+      list.head = newNode;
+
+    }else{
+      
+      //set tail.next to currentNode
+      list.tail.next = newNode;
+    }
+    
+    list.tail = newNode;
 
   };
 
   list.removeHead = function() {
+    list.head = list.head.next;
+
   };
 
   list.contains = function(target) {
