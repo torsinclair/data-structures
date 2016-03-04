@@ -18,15 +18,12 @@ Graph.prototype.addNode = function(node) {
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
    
-   // var found = false;
-
-
-   return _.reduce(this.nodes, function(accum, item) {
-      if( !accum && item.value === node ) {
-        accum = true;
-      }
-      return accum;
-   }, false);
+  return _.reduce(this.nodes, function(accum, item) {
+    if (!accum && item.value === node) {
+      accum = true;
+    }
+    return accum;
+  }, false);
 
 };
 
@@ -35,13 +32,13 @@ Graph.prototype.contains = function(node) {
 Graph.prototype.removeNode = function(node) {
 
 
-  for(var i = 0; i < this.nodes.length; i++){
-    if(this.nodes[i].value === node){
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i].value === node) {
       this.nodes.splice(i, 1);
       break;
     }
   }  
-  };
+};
 
 // ------------------------
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -86,11 +83,32 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  for(var i = 0; i < this.nodes.length; i++){
+    if(this.nodes[i].value === fromNode || this.nodes[i].value === toNode){
+      if(this.nodes[i].value === fromNode){
+        var loc = this.nodes[i].edges.indexOf(toNode);
+        if(loc >= 0){
+          this.nodes[i].edges.splice(loc, 1);
+        }
+      } else{
+        var loc = this.nodes[i].edges.indexOf(fromNode);
+        if(loc >= 0){
+          this.nodes[i].edges.splice(loc, 1);
+        }
+        this.nodes[i].edges.push(toNode);
+      }
+    }
+  }
+
+
 };
 
 // ------------------------
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  _.each(this.nodes, function(element) {
+    cb(element.value);
+  });
 };
 
 
