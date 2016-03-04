@@ -19,14 +19,16 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   
-  //search current node for target
   var doesContain = false;
   //search children  
   for(var i = 0; i < this.children.length; i++){
     if (this.children[i].value === target){
       doesContain = true;
+      break;
     }else{
-      return doesContain = this.children[i].contains(target)
+      // console.log()
+      doesContain = this.children[i].contains(target);
+      if (doesContain) { break ;}
     }
   }
 
@@ -35,17 +37,9 @@ treeMethods.contains = function(target) {
 
 
 
-/*var Node = function(value) {
-  var node = {};
-
-  node.value = value;
-  //node.next = null;
-
-  return node;
-};
-*/
-
-
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// contains - O(n)
+// addChild - O(1) - because it is pushing onto the very end of the array
