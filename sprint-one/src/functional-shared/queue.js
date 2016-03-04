@@ -7,7 +7,6 @@ var Queue = function() {
 
 };
 
-
 var queueMethods = {
   size: function(){
     return this.items;
@@ -18,15 +17,23 @@ var queueMethods = {
   },
   dequeue: function(){
     var value = this[0];
+
     this.items = Math.max(0, --this.items);
     delete this[0];
 
     _.reduce(this, function(acc, item, key){
-      if(Number.isInteger(key)){
-        acc[key-1] = item;
+      var num = parseInt(key);
+      if(num === num){
+        var ind = key-1;
+        acc[ind] = item;
       }
-    }, this);
+    },this);
 
-    return this.value;
+    if(this[this.items+1] !== undefined) {
+
+      delete this[this.items+1];  
+    }
+    
+    return value;
   }
 };
