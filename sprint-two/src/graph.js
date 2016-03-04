@@ -10,39 +10,77 @@ var Graph = function() {
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  this.nodes.push(node);
+  var newNode = Node(node);
+  this.nodes.push(newNode);
 };
 
 // ------------------------
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
    
-   var found = false;
+   // var found = false;
 
-   if (this.nodes.indexOf(node) >= 0) {
-    found = true;
-   }
 
-   return found;
+   return _.reduce(this.nodes, function(accum, item) {
+      if( !accum && item.value === node ) {
+        accum = true;
+      }
+      return accum;
+   }, false);
+
 };
 
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  var index = this.nodes.indexOf(node);
-  if (index >= 0) {
-    this.nodes.splice(index, 1);
-  }
-};
+
+
+  for(var i = 0; i < this.nodes.length; i++){
+    if(this.nodes[i].value === node){
+      this.nodes.splice(i, 1);
+      break;
+    }
+  }  
+  };
 
 // ------------------------
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  var isTrue = false;
+  for(var i = 0; i < this.nodes.length; i++){
+    if(this.nodes[i].value === fromNode || this.nodes[i].value === toNode){
+      if(this.nodes[i].value === fromNode){
+        if(this.nodes[i].edges.indexOf(toNode) >= 0){
+          isTrue = true;
+          break;
+        }
+      }else{
+        if(this.nodes[i].edges.indexOf(fromNode) >= 0){
+          isTrue = true;
+          break;
+        }
+      }
+    }
+  }
+  return isTrue;
 };
 
 // ------------------------
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+
+  //find fromNode
+
+  for(var i = 0; i < this.nodes.length; i++){
+    if(this.nodes[i].value === fromNode || this.nodes[i].value === toNode){
+      if(this.nodes[i].value === fromNode){
+        this.nodes[i].edges.push(toNode);
+      }else{
+        this.nodes[i].edges.push(fromNode);
+      }
+    }
+  }
+
 };
 
 // ------------------------
@@ -56,14 +94,14 @@ Graph.prototype.forEachNode = function(cb) {
 };
 
 
-// var Node = function(value) {
-//   var node = {};
+var Node = function(value) {
+  var node = {};
 
-//   node.value = value;
-//   node.edges = [];
-//   return node;
+  node.value = value;
+  node.edges = []; // array of Node.values
+  return node;
 
-// }
+}
 
 /*
  * Complexity: What is the time complexity of the above functions?
