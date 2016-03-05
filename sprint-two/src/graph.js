@@ -3,8 +3,7 @@
 // ------------------------
 // Instantiate a new graph
 var Graph = function() {
-    this.nodes = [];
-
+  this.nodes = [];
 };
 
 // ------------------------
@@ -30,8 +29,6 @@ Graph.prototype.contains = function(node) {
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-
-
   for (var i = 0; i < this.nodes.length; i++) {
     if (this.nodes[i].value === node) {
       this.nodes.splice(i, 1);
@@ -44,15 +41,15 @@ Graph.prototype.removeNode = function(node) {
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
   var isTrue = false;
-  for(var i = 0; i < this.nodes.length; i++){
-    if(this.nodes[i].value === fromNode || this.nodes[i].value === toNode){
-      if(this.nodes[i].value === fromNode){
-        if(this.nodes[i].edges.indexOf(toNode) >= 0){
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i].value === fromNode || this.nodes[i].value === toNode) {
+      if (this.nodes[i].value === fromNode) {
+        if (this.nodes[i].edges.indexOf(toNode) >= 0) {
           isTrue = true;
           break;
         }
-      }else{
-        if(this.nodes[i].edges.indexOf(fromNode) >= 0){
+      } else {
+        if (this.nodes[i].edges.indexOf(fromNode) >= 0) {
           isTrue = true;
           break;
         }
@@ -68,11 +65,11 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
   //find fromNode
 
-  for(var i = 0; i < this.nodes.length; i++){
-    if(this.nodes[i].value === fromNode || this.nodes[i].value === toNode){
-      if(this.nodes[i].value === fromNode){
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i].value === fromNode || this.nodes[i].value === toNode) {
+      if (this.nodes[i].value === fromNode) {
         this.nodes[i].edges.push(toNode);
-      }else{
+      } else {
         this.nodes[i].edges.push(fromNode);
       }
     }
@@ -83,16 +80,16 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  for(var i = 0; i < this.nodes.length; i++){
-    if(this.nodes[i].value === fromNode || this.nodes[i].value === toNode){
-      if(this.nodes[i].value === fromNode){
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i].value === fromNode || this.nodes[i].value === toNode) {
+      if (this.nodes[i].value === fromNode) {
         var loc = this.nodes[i].edges.indexOf(toNode);
-        if(loc >= 0){
+        if (loc >= 0) {
           this.nodes[i].edges.splice(loc, 1);
         }
-      } else{
+      } else {
         var loc = this.nodes[i].edges.indexOf(fromNode);
-        if(loc >= 0){
+        if (loc >= 0) {
           this.nodes[i].edges.splice(loc, 1);
         }
         this.nodes[i].edges.push(toNode);
@@ -119,7 +116,7 @@ var Node = function(value) {
   node.edges = []; // array of Node.values
   return node;
 
-}
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
