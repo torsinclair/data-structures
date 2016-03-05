@@ -21,14 +21,16 @@ treeMethods.contains = function(target) {
   
   var doesContain = false;
   //search children  
-  for(var i = 0; i < this.children.length; i++){
-    if (this.children[i].value === target){
-      doesContain = true;
-      break;
-    }else{
+  for (var i = 0; i < this.children.length; i++) {
+    if (this.children[i].value === target) {
+      // doesContain = true;
+      return true; //break;
+    } else {
       // console.log()
       doesContain = this.children[i].contains(target);
-      if (doesContain) { break ;}
+      if (doesContain) { 
+        break;
+      }
     }
   }
 
