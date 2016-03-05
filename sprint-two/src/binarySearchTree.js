@@ -39,7 +39,30 @@ var binaryTreeMethods = {
     }
   },
   contains: function(value) {
-    return false;
+    //check tree value === value;
+    //if true, return
+    if (this.value === value) {
+      return true;
+    }
+    //does tree have right value
+    if (this.value < value) {
+      //does right value !== undefined
+      if (this.right !== undefined) {
+        //recurse
+        return this.right.contains(value);
+      } else {
+        return false;
+      }
+    } else {
+    //does tree have left value !== undefined
+      if (this.left !== undefined) {
+        //recurse
+        return this.left.contains(value);
+      } else {
+        return false;
+      }
+    } 
+    
   },
   depthFirstLog: function(callback) {
     // execute callback on every value in tree
