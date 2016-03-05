@@ -35,6 +35,8 @@ Graph.prototype.removeNode = function(node) {
       break;
     }
   }  
+
+  //TODO - must remove edges when a node is removed
 };
 
 // ------------------------
@@ -121,5 +123,12 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+ // contains  - O(n)
+ // removeNode - O(n^2)
+ // hasEdge - O(n^2)
+ // addEdge - O(n)
+ // removeEdge - O(n^2)
+ // forEachNode - O(n) depending on what the callback function does
 
 
