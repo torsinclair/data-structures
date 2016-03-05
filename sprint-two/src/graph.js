@@ -30,13 +30,21 @@ Graph.prototype.contains = function(node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
   for (var i = 0; i < this.nodes.length; i++) {
+    // look for if this node equals the one passed in
     if (this.nodes[i].value === node) {
+      // delete this node from all of its edges
+
+      var tmpArray = this.nodes[i].edges.slice();
+
+      for (var j = 0; j < tmpArray.length; j++) {
+        // loop through edges and delete this node
+        this.removeEdge(node, tmpArray[j]);
+      }
+      //remove this node from nodes array
       this.nodes.splice(i, 1);
       break;
     }
   }  
-
-  //TODO - must remove edges when a node is removed
 };
 
 // ------------------------
@@ -94,7 +102,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
         if (loc >= 0) {
           this.nodes[i].edges.splice(loc, 1);
         }
-        this.nodes[i].edges.push(toNode);
+        //this.nodes[i].edges.push(toNode);
       }
     }
   }
@@ -125,7 +133,7 @@ var Node = function(value) {
  */
 
  // contains  - O(n)
- // removeNode - O(n^2)
+ // removeNode - O(n^4) - ouch
  // hasEdge - O(n^2)
  // addEdge - O(n)
  // removeEdge - O(n^2)
