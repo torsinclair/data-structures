@@ -65,8 +65,22 @@ var binaryTreeMethods = {
     
   },
   depthFirstLog: function(callback) {
-    // execute callback on every value in tree
+    // execute callback on value
+    callback(this.value);
+
+
+    // does tree have right value
+    if (this.right !== undefined) {
+      this.right.depthFirstLog(callback);
+    }
+
+    // does tree have a left value
+    if (this.left !== undefined) {
+      this.left.depthFirstLog(callback);
+    }
   }
+     
+  
 };
 
 
