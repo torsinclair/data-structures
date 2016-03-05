@@ -27,7 +27,8 @@ var binaryTreeMethods = {
         // it doesn't already exist, set to right
         this.left = newTree;
       }
-    } else {
+    }
+    if (this.value < value) {
       // if new value is greater than current value
       if (this.right) {
        // if it does exist, call insert on child node
@@ -87,3 +88,8 @@ var binaryTreeMethods = {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+ // insert - O(log(n)
+ // contains - O(log(n))
+ // depthFirstLog - O(n)
+
