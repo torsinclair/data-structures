@@ -5,29 +5,33 @@ var Queue = function() {
 
 };
 
-Queue.prototype.size = function(){
+Queue.prototype.size = function() {
   return this.items;
 };
 
-Queue.prototype.enqueue = function(value){
-  this.items++;
+Queue.prototype.enqueue = function(value) {
   this[this.items] = value;
+  this.items++;
 };
 
-Queue.prototype.dequeue = function(){
-  if(this.items !== 0){
-    var val = this['1'];
-    delete this['1'];
-    this.items--;
+Queue.prototype.dequeue = function() {
+  var value = this[0];
+  delete this[0];
 
-    _.reduce(this, function(acc, item, key){
-      if(typeof item !== 'function'){
-        acc = this[key-1] = item;
-        }
-      },this);        
-      
+  this.items = Math.max(0, --this.items);
+  _.reduce(this, function(acc, item, key){
+    var num = parseInt(key);
+    if(num === num){
+      var ind = key-1;
+      acc[ind] = item;
+    }
+  },this);
 
-    return val;
+  if(this[this.items+1] !== undefined) {
+
+    delete this[this.items+1];  
   }
-};
 
+  return value;
+
+};
