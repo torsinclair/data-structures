@@ -20,10 +20,14 @@ Queue.prototype.dequeue = function(){
     delete this['1'];
     this.items--;
 
-    _.reduce(this, function(acc, value, key){
-      acc = this[key-1] = value;
-    },this);
-  return val;
+    _.reduce(this, function(acc, item, key){
+      if(typeof item !== 'function'){
+        acc = this[key-1] = item;
+        }
+      },this);        
+      
+
+    return val;
   }
 };
 
