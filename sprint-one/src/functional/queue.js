@@ -19,8 +19,8 @@ var Queue = function() {
     items--;
 
     _.reduce(storage, function(acc,item,key){
-      storage[key-1] = item;
-    },storage);
+      acc = storage[key-1] = item;
+    },{});
 
     return val;
     }  
