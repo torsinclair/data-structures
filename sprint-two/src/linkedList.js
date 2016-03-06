@@ -19,11 +19,11 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    if(list.head !== null){
-      var oldHead = list.head;
-      delete list.head;
-      list.head = list.head.next;
-    }
+    var oldHead = list.head;
+    list.head = list.head.next;
+
+    return oldHead;
+
   };
 
   list.contains = function(target) {
