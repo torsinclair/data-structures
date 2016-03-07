@@ -102,12 +102,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
         if (loc >= 0) {
           this.nodes[i].edges.splice(loc, 1);
         }
-        //this.nodes[i].edges.push(toNode);
       }
     }
   }
-
-
 };
 
 // ------------------------
