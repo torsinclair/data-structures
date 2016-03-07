@@ -19,7 +19,6 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-
   if(this.value === target){
     return true;
   } 
@@ -27,6 +26,7 @@ treeMethods.contains = function(target) {
   for (var i = 0; i < this.children.length; i++){
     if(this.children[i].contains(target)){
       return true;
+
     }
   }
   
@@ -42,3 +42,6 @@ treeMethods.contains = function(target) {
  * treeMethods.addChild = O(1) = Constant: Pushing to the end of array is contant
  * treeMethods.contains = O(n) = Linear: Worst case, may need to step through array
  */
+
+// contains - O(n)
+// addChild - O(1) - because it is pushing onto the very end of the array
