@@ -54,4 +54,10 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * addToTail() = Constant, same action irrespective of the list size
+ * removeHead() = Constant, same action irrespective of the list size
+ * contains() = Linear, in worst case, must step through each node
+
  */
+
+
