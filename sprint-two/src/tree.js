@@ -1,10 +1,11 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-   
+
   _.extend(newTree, treeMethods);
-  
-  newTree.children = [];  
+
+  // your code here
+  newTree.children = [];
 
   return newTree;
 };
@@ -12,40 +13,32 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var tree = new Tree(value);
 
-  this.children.push(tree);
+  this.children.push(Tree(value));
+
 };
 
 treeMethods.contains = function(target) {
-  
-  //search current node for target
-  var doesContain = false;
-  //search children  
-  for(var i = 0; i < this.children.length; i++){
-    if (this.children[i].value === target){
-      doesContain = true;
-    }else{
-      return doesContain = this.children[i].contains(target)
+
+  if(this.value === target){
+    return true;
+  } 
+    
+  for (var i = 0; i < this.children.length; i++){
+    if(this.children[i].contains(target)){
+      return true;
     }
   }
+  
 
-  return doesContain;
+  return false;
+
 };
 
-
-
-/*var Node = function(value) {
-  var node = {};
-
-  node.value = value;
-  //node.next = null;
-
-  return node;
-};
-*/
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * treeMethods.addChild = O(1) = Constant: Pushing to the end of array is contant
+ * treeMethods.contains = O(n) = Linear: Worst case, may need to step through array
  */

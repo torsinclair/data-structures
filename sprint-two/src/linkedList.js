@@ -4,60 +4,35 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-
-    // create a Node object with the passed in value argument  
-    var newNode = Node(value);
-
-    // if head is null,this is a new list, we must add it
+    // are we initializing an empty container?
     if(list.head === null){
-      list.head = newNode;
-
+      // Yes
+      list.head = Node(value);
+      list.tail = list.head;
     }else{
-      
-      //set tail.next to currentNode
-      list.tail.next = newNode;
+      list.tail.next = Node(value);
+      list.tail = list.tail.next;
     }
-    
-    list.tail = newNode;
-
   };
 
   list.removeHead = function() {
-    var node = list.head;
-
+    var oldHead = list.head.value;
     list.head = list.head.next;
 
-    return node.value;
-
+    return oldHead;
   };
 
   list.contains = function(target) {
-    // iterate over list 
-
     var node = list.head;
-    var found = false;
 
-    //if there is only 1 node in the list
-    if( list.head === list.tail ) {
-      found = target === list.head.value;
+    while(node){
+      if (node.value === target){
+        return true;
+      } else {
+        node = node.next;
+      }
     }
-    else {
-       do {
-         // test for node.value === target
-         if( target === node.value ) {
-           found = true;
-           break;
-         }   
-         else {
-            node = node.next;
-
-         }
-      } while(node);
-    
-    }
-
-    return found;
-
+    return false;
   };
 
   return list;
@@ -74,10 +49,8 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * addToTail() = Constant, same action irrespective of the list size
+ * removeHead() = Constant, same action irrespective of the list size
+ * contains() = Linear, in worst case, must step through each node
+
  */
-
-
- // addToTail - O(1)
- // removeHead - O(1)
- // contains - O(n)
-

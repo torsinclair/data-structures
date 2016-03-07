@@ -11,13 +11,18 @@ var Stack = function() {
   // Implement the methods below
   someInstance.push = function(value) {
     items++;
-    return storage[items] = value;
+
+    storage[items] = value;
+
   };
 
   someInstance.pop = function() {
     var val = storage[items];
-    delete storage[items];
-    items = Math.max(0, --items);
+
+    if(items > 0){
+      delete storage[items];
+      items--;
+    }
 
     return val;
   };

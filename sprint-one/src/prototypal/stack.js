@@ -1,26 +1,31 @@
 var Stack = function() {
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
   var someInstance = Object.create(stackMethods);
-  someInstance.items = 0;
-  
+
+
   return someInstance;
 };
 
 var stackMethods = {};
 
-stackMethods.size = function() {
+stackMethods.items = 0;
+
+stackMethods.size = function(){
   return this.items;
 };
 
-stackMethods.push = function(value) {
+stackMethods.push = function(value){
   this.items++;
-  this[this.items] = value;
+  stackMethods[this.items] = value;
 };
 
-stackMethods.pop = function() {
-  var value = this[this.items];
-  delete this[this.items];
-  this.items = Math.max(0, --this.items);    
-  return value; 
+stackMethods.pop = function(){
+  if(this.items !== 0){
+    var val = stackMethods[this.items];
+    delete stackMethods[this.items];
+    this.items--;
+    return val;
+  }
 };
-
 
